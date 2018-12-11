@@ -1,23 +1,21 @@
-import io from 'socket.io-client';
 import EventEmitter from 'eventemitter3';
 
 export const eventEmitter = new EventEmitter();
 
 export const NEW_MEETING = 'NEW_MEETING';
 export const UPDATE_MEETINGS = 'UPDATE_MEETINGS';
+export const UPDATE_MEETING = 'UPDATE_MEETING';
 
 const sockets = {}
 
 export const Websocket = (room) => {
-    sockets[room] = io();
+    const ws = new WebSocket("ws://localhost:8080/ws/meeting");
     const eventEmitter = new EventEmitter();
-    sockets[room].on('connect', function() {
-        sockets[room].emit('room', room);
-        sockets[room].on('event', function(data){
-            console.log('meeting '+data);
-            eventEmitter.emit(data.type,data.meeting);
-        });
-     });
+    ws.onmessage = (msg) => {
+        const data = JSON.parse(msg.data);
+        console.log('meeting: '+data.type); 
+        eventEmitter.emit(data.type,data.meeting);
+    }
     return {
         eventEmitter,
         send: function(type,data) {
