@@ -19,7 +19,7 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 import java.util.Collections;
 
-@SpringBootApplication
+//@SpringBootApplication
 @Slf4j
 public class WebSocketServerApp {
   /*  @Bean

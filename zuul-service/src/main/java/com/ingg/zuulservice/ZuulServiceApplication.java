@@ -1,17 +1,18 @@
-package com.ingg.apcmeeting;
+package com.ingg.zuulservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
+@EnableZuulProxy
 @EnableEurekaClient
-@ComponentScan("com.ingg.apcmeeting")
-public class ApcMeetingApplication {
+public class ZuulServiceApplication {
 
 	public static void main(String[] args) {
-
-		SpringApplication.run(ApcMeetingApplication.class, args);
+		SpringApplication.run(ZuulServiceApplication.class, args);
 	}
+
 }
+

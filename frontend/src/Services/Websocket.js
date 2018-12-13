@@ -9,7 +9,7 @@ export const UPDATE_MEETING = 'UPDATE_MEETING';
 const sockets = {}
 
 export const Websocket = (room) => {
-    const ws = new WebSocket("ws://localhost:8080/ws/meeting");
+    const ws = new WebSocket("ws://localhost:8301/ws/meeting");
     const eventEmitter = new EventEmitter();
     ws.onmessage = (msg) => {
         const data = JSON.parse(msg.data);

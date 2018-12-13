@@ -1,0 +1,17 @@
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8302/eureka/
+  instance:
+    hostname: localhost
+
+zuul:
+  routes:
+    authentication-service:
+      path: /**
+      serviceId:
+#    meeting:
+#      path: /meeting/**
+#      serviceId: meeting-service
